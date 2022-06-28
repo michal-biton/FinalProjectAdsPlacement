@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="07f842660f464f899e78b0ccc269d8a9" Name="Diagram1">
+        <EntityTypeShape EntityType="AdsPlacementModel.AdImageTbl" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.AdplacementTbl" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.AdTbl" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.CategoryTbl" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.DealTbl" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.DealTypeTbl" Width="1.5" PointX="3.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.PageTbl" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.PageTypeTbl" Width="1.5" PointX="3.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.PermissionTbl" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.PlacementTbl" Width="1.5" PointX="6" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.PreferencePageTbl" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.PreferenceSheetTbl" Width="1.5" PointX="0.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.PriorityTbl" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.ScoreTbl" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.SheetTbl" Width="1.5" PointX="3.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.SheetTypeTbl" Width="1.5" PointX="1.5" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.SizeTbl" Width="1.5" PointX="0.75" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdsPlacementModel.UserTbl" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="AdsPlacementModel.FK_AdTbl_AdImageTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_AdplacementTbl_AdTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_AdplacementTbl_PageTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_AdplacementTbl_PlacementTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_AdsTbl_CategoryTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_AdTbl_DealTbl1" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_AdTbl_PageTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_AdTbl_PreferenceAdTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_AdTbl_PreferenceTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_AdTbl_SizeTbl1" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_AdTbl_UserTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_DealTbl_DealTypeTbl1" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_DealTbl_PageTypeTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_DealTbl_UserTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_PagesTbl_PageTypesTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_PlacementTbl_SheetTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_PriorityTbl_ScoreTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_PriorityTbl_UserTbl1" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_SheetsTbl_SheetTypesTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_SheetsTbl_SizesTbl1" ManuallyRouted="false" />
+        <AssociationConnector Association="AdsPlacementModel.FK_UserTbl_PermissionTbl" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

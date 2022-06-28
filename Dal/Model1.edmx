@@ -1,0 +1,1380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdsPlacementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdImageTbl">
+          <Key>
+            <PropertyRef Name="IDAdImage" />
+          </Key>
+          <Property Name="IDAdImage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AdplacementTbl">
+          <Key>
+            <PropertyRef Name="IDAdPlacement" />
+          </Key>
+          <Property Name="IDAdPlacement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPlacement" Type="int" />
+          <Property Name="IDAd" Type="int" />
+          <Property Name="IDPage" Type="int" />
+          <Property Name="LeftPositionX" Type="float" />
+          <Property Name="LeftPositionY" Type="float" />
+        </EntityType>
+        <EntityType Name="AdTbl">
+          <Key>
+            <PropertyRef Name="IDAd" />
+          </Key>
+          <Property Name="IDAd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSize" Type="int" />
+          <Property Name="IDPreferencePage" Type="int" />
+          <Property Name="IDPreferenceSheet" Type="int" />
+          <Property Name="DateRequest" Type="datetime" />
+          <Property Name="IDUser" Type="int" />
+          <Property Name="IDAdImage" Type="int" />
+          <Property Name="IsEmbedded" Type="int" />
+          <Property Name="LeftPositionX" Type="float" />
+          <Property Name="LeftPositionY" Type="float" />
+          <Property Name="IDDeal" Type="int" />
+          <Property Name="IDPage" Type="int" />
+          <Property Name="IDCategory" Type="int" />
+          <Property Name="IsGenizah" Type="int" />
+        </EntityType>
+        <EntityType Name="CategoryTbl">
+          <Key>
+            <PropertyRef Name="IDCategory" />
+          </Key>
+          <Property Name="IDCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescriptionCategory" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DealTbl">
+          <Key>
+            <PropertyRef Name="IDDeal" />
+          </Key>
+          <Property Name="IDDeal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDUser" Type="int" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="Price" Type="float" />
+          <Property Name="IDDealType" Type="int" />
+          <Property Name="IDPageType" Type="int" />
+        </EntityType>
+        <EntityType Name="DealTypeTbl">
+          <Key>
+            <PropertyRef Name="IDDealType" />
+          </Key>
+          <Property Name="IDDealType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescriptionDealType" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PageTbl">
+          <Key>
+            <PropertyRef Name="IDPage" />
+          </Key>
+          <Property Name="IDPage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageNum" Type="int" />
+          <Property Name="IDPageType" Type="int" />
+          <Property Name="IsExternal" Type="int" />
+          <Property Name="IDSheet" Type="int" />
+        </EntityType>
+        <EntityType Name="PageTypeTbl">
+          <Key>
+            <PropertyRef Name="IDPageType" />
+          </Key>
+          <Property Name="IDPageType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescriptionPageType" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PermissionTbl">
+          <Key>
+            <PropertyRef Name="IDPermission" />
+          </Key>
+          <Property Name="IDPermission" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PermissionName" Type="nchar" MaxLength="20" />
+          <Property Name="PermissionDescription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PlacementTbl">
+          <Key>
+            <PropertyRef Name="IDPlacement" />
+          </Key>
+          <Property Name="IDPlacement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatePlacement" Type="datetime" />
+          <Property Name="IDSheet" Type="int" />
+          <Property Name="MarkPlacement" Type="float" />
+        </EntityType>
+        <EntityType Name="PreferencePageTbl">
+          <Key>
+            <PropertyRef Name="IDPreferencePage" />
+          </Key>
+          <Property Name="IDPreferencePage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuarterLengthPage" Type="int" />
+          <Property Name="QuarterWidthPage" Type="int" />
+          <Property Name="IDSize" Type="int" />
+          <Property Name="GradePlace" Type="int" />
+          <Property Name="DescriptionPreferencePage" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PreferenceSheetTbl">
+          <Key>
+            <PropertyRef Name="IDPreferenceSheet" />
+          </Key>
+          <Property Name="IDPreferenceSheet" Type="int" Nullable="false" />
+          <Property Name="ThirdSheet" Type="int" />
+          <Property Name="ExternalOrInternalPage" Type="int" />
+          <Property Name="DescriptionPreferenceSheet" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PriorityTbl">
+          <Key>
+            <PropertyRef Name="IDPriority" />
+          </Key>
+          <Property Name="IDPriority" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDUser" Type="int" />
+          <Property Name="IDScore" Type="int" />
+        </EntityType>
+        <EntityType Name="ScoreTbl">
+          <Key>
+            <PropertyRef Name="IDScore" />
+          </Key>
+          <Property Name="IDScore" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescriptionScore" Type="nchar" MaxLength="50" />
+          <Property Name="Value" Type="int" />
+        </EntityType>
+        <EntityType Name="SheetTbl">
+          <Key>
+            <PropertyRef Name="IDSheet" />
+          </Key>
+          <Property Name="IDSheet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateDistribution" Type="date" />
+          <Property Name="NumOfPage" Type="int" />
+          <Property Name="NumOfSheet" Type="int" />
+          <Property Name="IDSheetType" Type="int" />
+          <Property Name="IDSize" Type="int" />
+        </EntityType>
+        <EntityType Name="SheetTypeTbl">
+          <Key>
+            <PropertyRef Name="IDSheetType" />
+          </Key>
+          <Property Name="IDSheetType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescriptionSheetType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SizeTbl">
+          <Key>
+            <PropertyRef Name="IDSize" />
+          </Key>
+          <Property Name="IDSize" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Length" Type="float" />
+          <Property Name="Width" Type="float" />
+          <Property Name="IsLength" Type="int" />
+          <Property Name="SizeInFragments" Type="float" />
+          <Property Name="DescriptionSize" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserTbl">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCustomer" Type="nchar" MaxLength="10" />
+          <Property Name="UserFName" Type="nchar" MaxLength="10" />
+          <Property Name="UserLName" Type="nchar" MaxLength="10" />
+          <Property Name="Address" Type="nchar" MaxLength="10" />
+          <Property Name="AddressNum" Type="int" />
+          <Property Name="Phone" Type="nchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nchar" MaxLength="10" />
+          <Property Name="IDPermission" Type="int" />
+          <Property Name="SumScore" Type="int" />
+        </EntityType>
+        <Association Name="FK_AdplacementTbl_AdTbl">
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="0..1" />
+          <End Role="AdplacementTbl" Type="Self.AdplacementTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdTbl">
+              <PropertyRef Name="IDAd" />
+            </Principal>
+            <Dependent Role="AdplacementTbl">
+              <PropertyRef Name="IDAd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdplacementTbl_PageTbl">
+          <End Role="PageTbl" Type="Self.PageTbl" Multiplicity="0..1" />
+          <End Role="AdplacementTbl" Type="Self.AdplacementTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageTbl">
+              <PropertyRef Name="IDPage" />
+            </Principal>
+            <Dependent Role="AdplacementTbl">
+              <PropertyRef Name="IDPage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdplacementTbl_PlacementTbl">
+          <End Role="PlacementTbl" Type="Self.PlacementTbl" Multiplicity="0..1" />
+          <End Role="AdplacementTbl" Type="Self.AdplacementTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacementTbl">
+              <PropertyRef Name="IDPlacement" />
+            </Principal>
+            <Dependent Role="AdplacementTbl">
+              <PropertyRef Name="IDPlacement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdsTbl_CategoryTbl">
+          <End Role="CategoryTbl" Type="Self.CategoryTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTbl">
+              <PropertyRef Name="IDCategory" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_AdImageTbl">
+          <End Role="AdImageTbl" Type="Self.AdImageTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdImageTbl">
+              <PropertyRef Name="IDAdImage" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDAdImage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_DealTbl1">
+          <End Role="DealTbl" Type="Self.DealTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealTbl">
+              <PropertyRef Name="IDDeal" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDDeal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_PageTbl">
+          <End Role="PageTbl" Type="Self.PageTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageTbl">
+              <PropertyRef Name="IDPage" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDPage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_PreferenceAdTbl">
+          <End Role="PreferenceSheetTbl" Type="Self.PreferenceSheetTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferenceSheetTbl">
+              <PropertyRef Name="IDPreferenceSheet" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDPreferenceSheet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_PreferenceTbl">
+          <End Role="PreferencePageTbl" Type="Self.PreferencePageTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferencePageTbl">
+              <PropertyRef Name="IDPreferencePage" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDPreferencePage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_SizeTbl1">
+          <End Role="SizeTbl" Type="Self.SizeTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SizeTbl">
+              <PropertyRef Name="IDSize" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDSize" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_UserTbl">
+          <End Role="UserTbl" Type="Self.UserTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTbl">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealTbl_DealTypeTbl1">
+          <End Role="DealTypeTbl" Type="Self.DealTypeTbl" Multiplicity="0..1" />
+          <End Role="DealTbl" Type="Self.DealTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealTypeTbl">
+              <PropertyRef Name="IDDealType" />
+            </Principal>
+            <Dependent Role="DealTbl">
+              <PropertyRef Name="IDDealType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealTbl_PageTypeTbl">
+          <End Role="PageTypeTbl" Type="Self.PageTypeTbl" Multiplicity="0..1" />
+          <End Role="DealTbl" Type="Self.DealTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageTypeTbl">
+              <PropertyRef Name="IDPageType" />
+            </Principal>
+            <Dependent Role="DealTbl">
+              <PropertyRef Name="IDPageType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealTbl_UserTbl">
+          <End Role="UserTbl" Type="Self.UserTbl" Multiplicity="0..1" />
+          <End Role="DealTbl" Type="Self.DealTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTbl">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="DealTbl">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagesTbl_PageTypesTbl">
+          <End Role="PageTypeTbl" Type="Self.PageTypeTbl" Multiplicity="0..1" />
+          <End Role="PageTbl" Type="Self.PageTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageTypeTbl">
+              <PropertyRef Name="IDPageType" />
+            </Principal>
+            <Dependent Role="PageTbl">
+              <PropertyRef Name="IDPageType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacementTbl_SheetTbl">
+          <End Role="SheetTbl" Type="Self.SheetTbl" Multiplicity="0..1" />
+          <End Role="PlacementTbl" Type="Self.PlacementTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SheetTbl">
+              <PropertyRef Name="IDSheet" />
+            </Principal>
+            <Dependent Role="PlacementTbl">
+              <PropertyRef Name="IDSheet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriorityTbl_ScoreTbl">
+          <End Role="ScoreTbl" Type="Self.ScoreTbl" Multiplicity="0..1" />
+          <End Role="PriorityTbl" Type="Self.PriorityTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScoreTbl">
+              <PropertyRef Name="IDScore" />
+            </Principal>
+            <Dependent Role="PriorityTbl">
+              <PropertyRef Name="IDScore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriorityTbl_UserTbl1">
+          <End Role="UserTbl" Type="Self.UserTbl" Multiplicity="0..1" />
+          <End Role="PriorityTbl" Type="Self.PriorityTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTbl">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="PriorityTbl">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SheetsTbl_SheetTypesTbl">
+          <End Role="SheetTypeTbl" Type="Self.SheetTypeTbl" Multiplicity="0..1" />
+          <End Role="SheetTbl" Type="Self.SheetTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SheetTypeTbl">
+              <PropertyRef Name="IDSheetType" />
+            </Principal>
+            <Dependent Role="SheetTbl">
+              <PropertyRef Name="IDSheetType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SheetsTbl_SizesTbl1">
+          <End Role="SizeTbl" Type="Self.SizeTbl" Multiplicity="0..1" />
+          <End Role="SheetTbl" Type="Self.SheetTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SizeTbl">
+              <PropertyRef Name="IDSize" />
+            </Principal>
+            <Dependent Role="SheetTbl">
+              <PropertyRef Name="IDSize" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTbl_PermissionTbl">
+          <End Role="PermissionTbl" Type="Self.PermissionTbl" Multiplicity="0..1" />
+          <End Role="UserTbl" Type="Self.UserTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PermissionTbl">
+              <PropertyRef Name="IDPermission" />
+            </Principal>
+            <Dependent Role="UserTbl">
+              <PropertyRef Name="IDPermission" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AdsPlacementModelStoreContainer">
+          <EntitySet Name="AdImageTbl" EntityType="Self.AdImageTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdplacementTbl" EntityType="Self.AdplacementTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdTbl" EntityType="Self.AdTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryTbl" EntityType="Self.CategoryTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealTbl" EntityType="Self.DealTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DealTypeTbl" EntityType="Self.DealTypeTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageTbl" EntityType="Self.PageTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageTypeTbl" EntityType="Self.PageTypeTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermissionTbl" EntityType="Self.PermissionTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlacementTbl" EntityType="Self.PlacementTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreferencePageTbl" EntityType="Self.PreferencePageTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreferenceSheetTbl" EntityType="Self.PreferenceSheetTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriorityTbl" EntityType="Self.PriorityTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScoreTbl" EntityType="Self.ScoreTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SheetTbl" EntityType="Self.SheetTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SheetTypeTbl" EntityType="Self.SheetTypeTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SizeTbl" EntityType="Self.SizeTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTbl" EntityType="Self.UserTbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AdplacementTbl_AdTbl" Association="Self.FK_AdplacementTbl_AdTbl">
+            <End Role="AdTbl" EntitySet="AdTbl" />
+            <End Role="AdplacementTbl" EntitySet="AdplacementTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdplacementTbl_PageTbl" Association="Self.FK_AdplacementTbl_PageTbl">
+            <End Role="PageTbl" EntitySet="PageTbl" />
+            <End Role="AdplacementTbl" EntitySet="AdplacementTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdplacementTbl_PlacementTbl" Association="Self.FK_AdplacementTbl_PlacementTbl">
+            <End Role="PlacementTbl" EntitySet="PlacementTbl" />
+            <End Role="AdplacementTbl" EntitySet="AdplacementTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdsTbl_CategoryTbl" Association="Self.FK_AdsTbl_CategoryTbl">
+            <End Role="CategoryTbl" EntitySet="CategoryTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_AdImageTbl" Association="Self.FK_AdTbl_AdImageTbl">
+            <End Role="AdImageTbl" EntitySet="AdImageTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_DealTbl1" Association="Self.FK_AdTbl_DealTbl1">
+            <End Role="DealTbl" EntitySet="DealTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_PageTbl" Association="Self.FK_AdTbl_PageTbl">
+            <End Role="PageTbl" EntitySet="PageTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_PreferenceAdTbl" Association="Self.FK_AdTbl_PreferenceAdTbl">
+            <End Role="PreferenceSheetTbl" EntitySet="PreferenceSheetTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_PreferenceTbl" Association="Self.FK_AdTbl_PreferenceTbl">
+            <End Role="PreferencePageTbl" EntitySet="PreferencePageTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_SizeTbl1" Association="Self.FK_AdTbl_SizeTbl1">
+            <End Role="SizeTbl" EntitySet="SizeTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_UserTbl" Association="Self.FK_AdTbl_UserTbl">
+            <End Role="UserTbl" EntitySet="UserTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealTbl_DealTypeTbl1" Association="Self.FK_DealTbl_DealTypeTbl1">
+            <End Role="DealTypeTbl" EntitySet="DealTypeTbl" />
+            <End Role="DealTbl" EntitySet="DealTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealTbl_PageTypeTbl" Association="Self.FK_DealTbl_PageTypeTbl">
+            <End Role="PageTypeTbl" EntitySet="PageTypeTbl" />
+            <End Role="DealTbl" EntitySet="DealTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealTbl_UserTbl" Association="Self.FK_DealTbl_UserTbl">
+            <End Role="UserTbl" EntitySet="UserTbl" />
+            <End Role="DealTbl" EntitySet="DealTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagesTbl_PageTypesTbl" Association="Self.FK_PagesTbl_PageTypesTbl">
+            <End Role="PageTypeTbl" EntitySet="PageTypeTbl" />
+            <End Role="PageTbl" EntitySet="PageTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacementTbl_SheetTbl" Association="Self.FK_PlacementTbl_SheetTbl">
+            <End Role="SheetTbl" EntitySet="SheetTbl" />
+            <End Role="PlacementTbl" EntitySet="PlacementTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriorityTbl_ScoreTbl" Association="Self.FK_PriorityTbl_ScoreTbl">
+            <End Role="ScoreTbl" EntitySet="ScoreTbl" />
+            <End Role="PriorityTbl" EntitySet="PriorityTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriorityTbl_UserTbl1" Association="Self.FK_PriorityTbl_UserTbl1">
+            <End Role="UserTbl" EntitySet="UserTbl" />
+            <End Role="PriorityTbl" EntitySet="PriorityTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SheetsTbl_SheetTypesTbl" Association="Self.FK_SheetsTbl_SheetTypesTbl">
+            <End Role="SheetTypeTbl" EntitySet="SheetTypeTbl" />
+            <End Role="SheetTbl" EntitySet="SheetTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SheetsTbl_SizesTbl1" Association="Self.FK_SheetsTbl_SizesTbl1">
+            <End Role="SizeTbl" EntitySet="SizeTbl" />
+            <End Role="SheetTbl" EntitySet="SheetTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTbl_PermissionTbl" Association="Self.FK_UserTbl_PermissionTbl">
+            <End Role="PermissionTbl" EntitySet="PermissionTbl" />
+            <End Role="UserTbl" EntitySet="UserTbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdsPlacementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdImageTbl">
+          <Key>
+            <PropertyRef Name="IDAdImage" />
+          </Key>
+          <Property Name="IDAdImage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilePath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdTbl" Relationship="Self.FK_AdTbl_AdImageTbl" FromRole="AdImageTbl" ToRole="AdTbl" />
+        </EntityType>
+        <EntityType Name="AdplacementTbl">
+          <Key>
+            <PropertyRef Name="IDAdPlacement" />
+          </Key>
+          <Property Name="IDAdPlacement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPlacement" Type="Int32" />
+          <Property Name="IDAd" Type="Int32" />
+          <Property Name="IDPage" Type="Int32" />
+          <Property Name="LeftPositionX" Type="Double" />
+          <Property Name="LeftPositionY" Type="Double" />
+          <NavigationProperty Name="AdTbl" Relationship="Self.FK_AdplacementTbl_AdTbl" FromRole="AdplacementTbl" ToRole="AdTbl" />
+          <NavigationProperty Name="PageTbl" Relationship="Self.FK_AdplacementTbl_PageTbl" FromRole="AdplacementTbl" ToRole="PageTbl" />
+          <NavigationProperty Name="PlacementTbl" Relationship="Self.FK_AdplacementTbl_PlacementTbl" FromRole="AdplacementTbl" ToRole="PlacementTbl" />
+        </EntityType>
+        <EntityType Name="AdTbl">
+          <Key>
+            <PropertyRef Name="IDAd" />
+          </Key>
+          <Property Name="IDAd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSize" Type="Int32" />
+          <Property Name="IDPreferencePage" Type="Int32" />
+          <Property Name="IDPreferenceSheet" Type="Int32" />
+          <Property Name="DateRequest" Type="DateTime" Precision="3" />
+          <Property Name="IDUser" Type="Int32" />
+          <Property Name="IsGenizah" Type="Int32" />
+          <Property Name="IDCategory" Type="Int32" />
+          <Property Name="IsEmbedded" Type="Int32" />
+          <Property Name="LeftPositionX" Type="Double" />
+          <Property Name="LeftPositionY" Type="Double" />
+          <Property Name="IDDeal" Type="Int32" />
+          <Property Name="IDPage" Type="Int32" />
+          <Property Name="IDAdImage" Type="Int32" />
+          <NavigationProperty Name="AdImageTbl" Relationship="Self.FK_AdTbl_AdImageTbl" FromRole="AdTbl" ToRole="AdImageTbl" />
+          <NavigationProperty Name="AdplacementTbl" Relationship="Self.FK_AdplacementTbl_AdTbl" FromRole="AdTbl" ToRole="AdplacementTbl" />
+          <NavigationProperty Name="CategoryTbl" Relationship="Self.FK_AdsTbl_CategoryTbl" FromRole="AdTbl" ToRole="CategoryTbl" />
+          <NavigationProperty Name="DealTbl" Relationship="Self.FK_AdTbl_DealTbl1" FromRole="AdTbl" ToRole="DealTbl" />
+          <NavigationProperty Name="PageTbl" Relationship="Self.FK_AdTbl_PageTbl" FromRole="AdTbl" ToRole="PageTbl" />
+          <NavigationProperty Name="PreferenceSheetTbl" Relationship="Self.FK_AdTbl_PreferenceAdTbl" FromRole="AdTbl" ToRole="PreferenceSheetTbl" />
+          <NavigationProperty Name="PreferencePageTbl" Relationship="Self.FK_AdTbl_PreferenceTbl" FromRole="AdTbl" ToRole="PreferencePageTbl" />
+          <NavigationProperty Name="SizeTbl" Relationship="Self.FK_AdTbl_SizeTbl1" FromRole="AdTbl" ToRole="SizeTbl" />
+          <NavigationProperty Name="UserTbl" Relationship="Self.FK_AdTbl_UserTbl" FromRole="AdTbl" ToRole="UserTbl" />
+        </EntityType>
+        <EntityType Name="CategoryTbl">
+          <Key>
+            <PropertyRef Name="IDCategory" />
+          </Key>
+          <Property Name="IDCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptionCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdTbl" Relationship="Self.FK_AdsTbl_CategoryTbl" FromRole="CategoryTbl" ToRole="AdTbl" />
+        </EntityType>
+        <EntityType Name="DealTbl">
+          <Key>
+            <PropertyRef Name="IDDeal" />
+          </Key>
+          <Property Name="IDDeal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUser" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="IDDealType" Type="Int32" />
+          <Property Name="IDPageType" Type="Int32" />
+          <NavigationProperty Name="AdTbl" Relationship="Self.FK_AdTbl_DealTbl1" FromRole="DealTbl" ToRole="AdTbl" />
+          <NavigationProperty Name="DealTypeTbl" Relationship="Self.FK_DealTbl_DealTypeTbl1" FromRole="DealTbl" ToRole="DealTypeTbl" />
+          <NavigationProperty Name="PageTypeTbl" Relationship="Self.FK_DealTbl_PageTypeTbl" FromRole="DealTbl" ToRole="PageTypeTbl" />
+          <NavigationProperty Name="UserTbl" Relationship="Self.FK_DealTbl_UserTbl" FromRole="DealTbl" ToRole="UserTbl" />
+        </EntityType>
+        <EntityType Name="DealTypeTbl">
+          <Key>
+            <PropertyRef Name="IDDealType" />
+          </Key>
+          <Property Name="IDDealType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptionDealType" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="DealTbl" Relationship="Self.FK_DealTbl_DealTypeTbl1" FromRole="DealTypeTbl" ToRole="DealTbl" />
+        </EntityType>
+        <EntityType Name="PageTbl">
+          <Key>
+            <PropertyRef Name="IDPage" />
+          </Key>
+          <Property Name="IDPage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageNum" Type="Int32" />
+          <Property Name="IDPageType" Type="Int32" />
+          <Property Name="IsExternal" Type="Int32" />
+          <Property Name="IDSheet" Type="Int32" />
+          <NavigationProperty Name="AdplacementTbl" Relationship="Self.FK_AdplacementTbl_PageTbl" FromRole="PageTbl" ToRole="AdplacementTbl" />
+          <NavigationProperty Name="AdTbl" Relationship="Self.FK_AdTbl_PageTbl" FromRole="PageTbl" ToRole="AdTbl" />
+          <NavigationProperty Name="PageTypeTbl" Relationship="Self.FK_PagesTbl_PageTypesTbl" FromRole="PageTbl" ToRole="PageTypeTbl" />
+        </EntityType>
+        <EntityType Name="PageTypeTbl">
+          <Key>
+            <PropertyRef Name="IDPageType" />
+          </Key>
+          <Property Name="IDPageType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptionPageType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="DealTbl" Relationship="Self.FK_DealTbl_PageTypeTbl" FromRole="PageTypeTbl" ToRole="DealTbl" />
+          <NavigationProperty Name="PageTbl" Relationship="Self.FK_PagesTbl_PageTypesTbl" FromRole="PageTypeTbl" ToRole="PageTbl" />
+        </EntityType>
+        <EntityType Name="PermissionTbl">
+          <Key>
+            <PropertyRef Name="IDPermission" />
+          </Key>
+          <Property Name="IDPermission" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PermissionName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="PermissionDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserTbl" Relationship="AdsPlacementModel.FK_UserTbl_PermissionTbl" FromRole="PermissionTbl" ToRole="UserTbl" />
+        </EntityType>
+        <EntityType Name="PlacementTbl">
+          <Key>
+            <PropertyRef Name="IDPlacement" />
+          </Key>
+          <Property Name="IDPlacement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatePlacement" Type="DateTime" Precision="3" />
+          <Property Name="IDSheet" Type="Int32" />
+          <Property Name="MarkPlacement" Type="Double" />
+          <NavigationProperty Name="AdplacementTbl" Relationship="Self.FK_AdplacementTbl_PlacementTbl" FromRole="PlacementTbl" ToRole="AdplacementTbl" />
+          <NavigationProperty Name="SheetTbl" Relationship="Self.FK_PlacementTbl_SheetTbl" FromRole="PlacementTbl" ToRole="SheetTbl" />
+        </EntityType>
+        <EntityType Name="PreferencePageTbl">
+          <Key>
+            <PropertyRef Name="IDPreferencePage" />
+          </Key>
+          <Property Name="IDPreferencePage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuarterLengthPage" Type="Int32" />
+          <Property Name="QuarterWidthPage" Type="Int32" />
+          <Property Name="IDSize" Type="Int32" />
+          <Property Name="GradePlace" Type="Int32" />
+          <NavigationProperty Name="AdTbl" Relationship="Self.FK_AdTbl_PreferenceTbl" FromRole="PreferencePageTbl" ToRole="AdTbl" />
+          <Property Name="DescriptionPreferencePage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PreferenceSheetTbl">
+          <Key>
+            <PropertyRef Name="IDPreferenceSheet" />
+          </Key>
+          <Property Name="IDPreferenceSheet" Type="Int32" Nullable="false" />
+          <Property Name="ThirdSheet" Type="Int32" />
+          <Property Name="ExternalOrInternalPage" Type="Int32" />
+          <Property Name="DescriptionPreferenceSheet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdTbl" Relationship="Self.FK_AdTbl_PreferenceAdTbl" FromRole="PreferenceSheetTbl" ToRole="AdTbl" />
+        </EntityType>
+        <EntityType Name="PriorityTbl">
+          <Key>
+            <PropertyRef Name="IDPriority" />
+          </Key>
+          <Property Name="IDPriority" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUser" Type="Int32" />
+          <Property Name="IDScore" Type="Int32" />
+          <NavigationProperty Name="ScoreTbl" Relationship="Self.FK_PriorityTbl_ScoreTbl" FromRole="PriorityTbl" ToRole="ScoreTbl" />
+          <NavigationProperty Name="UserTbl" Relationship="Self.FK_PriorityTbl_UserTbl1" FromRole="PriorityTbl" ToRole="UserTbl" />
+        </EntityType>
+        <EntityType Name="ScoreTbl">
+          <Key>
+            <PropertyRef Name="IDScore" />
+          </Key>
+          <Property Name="IDScore" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptionScore" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Value" Type="Int32" />
+          <NavigationProperty Name="PriorityTbl" Relationship="Self.FK_PriorityTbl_ScoreTbl" FromRole="ScoreTbl" ToRole="PriorityTbl" />
+        </EntityType>
+        <EntityType Name="SheetTbl">
+          <Key>
+            <PropertyRef Name="IDSheet" />
+          </Key>
+          <Property Name="IDSheet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateDistribution" Type="DateTime" Precision="0" />
+          <Property Name="NumOfPage" Type="Int32" />
+          <Property Name="NumOfSheet" Type="Int32" />
+          <Property Name="IDSheetType" Type="Int32" />
+          <Property Name="IDSize" Type="Int32" />
+          <NavigationProperty Name="PlacementTbl" Relationship="Self.FK_PlacementTbl_SheetTbl" FromRole="SheetTbl" ToRole="PlacementTbl" />
+          <NavigationProperty Name="SheetTypeTbl" Relationship="Self.FK_SheetsTbl_SheetTypesTbl" FromRole="SheetTbl" ToRole="SheetTypeTbl" />
+          <NavigationProperty Name="SizeTbl" Relationship="Self.FK_SheetsTbl_SizesTbl1" FromRole="SheetTbl" ToRole="SizeTbl" />
+        </EntityType>
+        <EntityType Name="SheetTypeTbl">
+          <Key>
+            <PropertyRef Name="IDSheetType" />
+          </Key>
+          <Property Name="IDSheetType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptionSheetType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SheetTbl" Relationship="Self.FK_SheetsTbl_SheetTypesTbl" FromRole="SheetTypeTbl" ToRole="SheetTbl" />
+        </EntityType>
+        <EntityType Name="SizeTbl">
+          <Key>
+            <PropertyRef Name="IDSize" />
+          </Key>
+          <Property Name="IDSize" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Length" Type="Double" />
+          <Property Name="Width" Type="Double" />
+          <Property Name="IsLength" Type="Int32" />
+          <Property Name="SizeInFragments" Type="Double" />
+          <Property Name="DescriptionSize" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="AdTbl" Relationship="Self.FK_AdTbl_SizeTbl1" FromRole="SizeTbl" ToRole="AdTbl" />
+          <NavigationProperty Name="SheetTbl" Relationship="Self.FK_SheetsTbl_SizesTbl1" FromRole="SizeTbl" ToRole="SheetTbl" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserTbl">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCustomer" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="UserFName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="UserLName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AddressNum" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IDPermission" Type="Int32" />
+          <Property Name="SumScore" Type="Int32" />
+          <NavigationProperty Name="AdTbl" Relationship="Self.FK_AdTbl_UserTbl" FromRole="UserTbl" ToRole="AdTbl" />
+          <NavigationProperty Name="DealTbl" Relationship="Self.FK_DealTbl_UserTbl" FromRole="UserTbl" ToRole="DealTbl" />
+          <NavigationProperty Name="PriorityTbl" Relationship="Self.FK_PriorityTbl_UserTbl1" FromRole="UserTbl" ToRole="PriorityTbl" />
+          <NavigationProperty Name="PermissionTbl" Relationship="AdsPlacementModel.FK_UserTbl_PermissionTbl" FromRole="UserTbl" ToRole="PermissionTbl" />
+        </EntityType>
+        <Association Name="FK_AdTbl_AdImageTbl">
+          <End Role="AdImageTbl" Type="Self.AdImageTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdImageTbl">
+              <PropertyRef Name="IDAdImage" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDAdImage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdplacementTbl_AdTbl">
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="0..1" />
+          <End Role="AdplacementTbl" Type="Self.AdplacementTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdTbl">
+              <PropertyRef Name="IDAd" />
+            </Principal>
+            <Dependent Role="AdplacementTbl">
+              <PropertyRef Name="IDAd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdplacementTbl_PageTbl">
+          <End Role="PageTbl" Type="Self.PageTbl" Multiplicity="0..1" />
+          <End Role="AdplacementTbl" Type="Self.AdplacementTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageTbl">
+              <PropertyRef Name="IDPage" />
+            </Principal>
+            <Dependent Role="AdplacementTbl">
+              <PropertyRef Name="IDPage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdplacementTbl_PlacementTbl">
+          <End Role="PlacementTbl" Type="Self.PlacementTbl" Multiplicity="0..1" />
+          <End Role="AdplacementTbl" Type="Self.AdplacementTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacementTbl">
+              <PropertyRef Name="IDPlacement" />
+            </Principal>
+            <Dependent Role="AdplacementTbl">
+              <PropertyRef Name="IDPlacement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdsTbl_CategoryTbl">
+          <End Role="CategoryTbl" Type="Self.CategoryTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTbl">
+              <PropertyRef Name="IDCategory" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_DealTbl1">
+          <End Role="DealTbl" Type="Self.DealTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealTbl">
+              <PropertyRef Name="IDDeal" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDDeal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_PageTbl">
+          <End Role="PageTbl" Type="Self.PageTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageTbl">
+              <PropertyRef Name="IDPage" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDPage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_PreferenceAdTbl">
+          <End Role="PreferenceSheetTbl" Type="Self.PreferenceSheetTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferenceSheetTbl">
+              <PropertyRef Name="IDPreferenceSheet" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDPreferenceSheet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_PreferenceTbl">
+          <End Role="PreferencePageTbl" Type="Self.PreferencePageTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferencePageTbl">
+              <PropertyRef Name="IDPreferencePage" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDPreferencePage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_SizeTbl1">
+          <End Role="SizeTbl" Type="Self.SizeTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SizeTbl">
+              <PropertyRef Name="IDSize" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDSize" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdTbl_UserTbl">
+          <End Role="UserTbl" Type="Self.UserTbl" Multiplicity="0..1" />
+          <End Role="AdTbl" Type="Self.AdTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTbl">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="AdTbl">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealTbl_DealTypeTbl1">
+          <End Role="DealTypeTbl" Type="Self.DealTypeTbl" Multiplicity="0..1" />
+          <End Role="DealTbl" Type="Self.DealTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DealTypeTbl">
+              <PropertyRef Name="IDDealType" />
+            </Principal>
+            <Dependent Role="DealTbl">
+              <PropertyRef Name="IDDealType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealTbl_PageTypeTbl">
+          <End Role="PageTypeTbl" Type="Self.PageTypeTbl" Multiplicity="0..1" />
+          <End Role="DealTbl" Type="Self.DealTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageTypeTbl">
+              <PropertyRef Name="IDPageType" />
+            </Principal>
+            <Dependent Role="DealTbl">
+              <PropertyRef Name="IDPageType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DealTbl_UserTbl">
+          <End Role="UserTbl" Type="Self.UserTbl" Multiplicity="0..1" />
+          <End Role="DealTbl" Type="Self.DealTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTbl">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="DealTbl">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PagesTbl_PageTypesTbl">
+          <End Role="PageTypeTbl" Type="Self.PageTypeTbl" Multiplicity="0..1" />
+          <End Role="PageTbl" Type="Self.PageTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageTypeTbl">
+              <PropertyRef Name="IDPageType" />
+            </Principal>
+            <Dependent Role="PageTbl">
+              <PropertyRef Name="IDPageType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacementTbl_SheetTbl">
+          <End Role="SheetTbl" Type="Self.SheetTbl" Multiplicity="0..1" />
+          <End Role="PlacementTbl" Type="Self.PlacementTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SheetTbl">
+              <PropertyRef Name="IDSheet" />
+            </Principal>
+            <Dependent Role="PlacementTbl">
+              <PropertyRef Name="IDSheet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriorityTbl_ScoreTbl">
+          <End Role="ScoreTbl" Type="Self.ScoreTbl" Multiplicity="0..1" />
+          <End Role="PriorityTbl" Type="Self.PriorityTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ScoreTbl">
+              <PropertyRef Name="IDScore" />
+            </Principal>
+            <Dependent Role="PriorityTbl">
+              <PropertyRef Name="IDScore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriorityTbl_UserTbl1">
+          <End Role="UserTbl" Type="Self.UserTbl" Multiplicity="0..1" />
+          <End Role="PriorityTbl" Type="Self.PriorityTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTbl">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="PriorityTbl">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SheetsTbl_SheetTypesTbl">
+          <End Role="SheetTypeTbl" Type="Self.SheetTypeTbl" Multiplicity="0..1" />
+          <End Role="SheetTbl" Type="Self.SheetTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SheetTypeTbl">
+              <PropertyRef Name="IDSheetType" />
+            </Principal>
+            <Dependent Role="SheetTbl">
+              <PropertyRef Name="IDSheetType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SheetsTbl_SizesTbl1">
+          <End Role="SizeTbl" Type="Self.SizeTbl" Multiplicity="0..1" />
+          <End Role="SheetTbl" Type="Self.SheetTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SizeTbl">
+              <PropertyRef Name="IDSize" />
+            </Principal>
+            <Dependent Role="SheetTbl">
+              <PropertyRef Name="IDSize" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AdsPlacementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdImageTbl" EntityType="Self.AdImageTbl" />
+          <EntitySet Name="AdplacementTbl" EntityType="Self.AdplacementTbl" />
+          <EntitySet Name="AdTbl" EntityType="Self.AdTbl" />
+          <EntitySet Name="CategoryTbl" EntityType="Self.CategoryTbl" />
+          <EntitySet Name="DealTbl" EntityType="Self.DealTbl" />
+          <EntitySet Name="DealTypeTbl" EntityType="Self.DealTypeTbl" />
+          <EntitySet Name="PageTbl" EntityType="Self.PageTbl" />
+          <EntitySet Name="PageTypeTbl" EntityType="Self.PageTypeTbl" />
+          <EntitySet Name="PermissionTbl" EntityType="Self.PermissionTbl" />
+          <EntitySet Name="PlacementTbl" EntityType="Self.PlacementTbl" />
+          <EntitySet Name="PreferencePageTbl" EntityType="Self.PreferencePageTbl" />
+          <EntitySet Name="PreferenceSheetTbl" EntityType="Self.PreferenceSheetTbl" />
+          <EntitySet Name="PriorityTbl" EntityType="Self.PriorityTbl" />
+          <EntitySet Name="ScoreTbl" EntityType="Self.ScoreTbl" />
+          <EntitySet Name="SheetTbl" EntityType="Self.SheetTbl" />
+          <EntitySet Name="SheetTypeTbl" EntityType="Self.SheetTypeTbl" />
+          <EntitySet Name="SizeTbl" EntityType="Self.SizeTbl" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="UserTbl" EntityType="Self.UserTbl" />
+          <AssociationSet Name="FK_AdTbl_AdImageTbl" Association="Self.FK_AdTbl_AdImageTbl">
+            <End Role="AdImageTbl" EntitySet="AdImageTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdplacementTbl_AdTbl" Association="Self.FK_AdplacementTbl_AdTbl">
+            <End Role="AdTbl" EntitySet="AdTbl" />
+            <End Role="AdplacementTbl" EntitySet="AdplacementTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdplacementTbl_PageTbl" Association="Self.FK_AdplacementTbl_PageTbl">
+            <End Role="PageTbl" EntitySet="PageTbl" />
+            <End Role="AdplacementTbl" EntitySet="AdplacementTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdplacementTbl_PlacementTbl" Association="Self.FK_AdplacementTbl_PlacementTbl">
+            <End Role="PlacementTbl" EntitySet="PlacementTbl" />
+            <End Role="AdplacementTbl" EntitySet="AdplacementTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdsTbl_CategoryTbl" Association="Self.FK_AdsTbl_CategoryTbl">
+            <End Role="CategoryTbl" EntitySet="CategoryTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_DealTbl1" Association="Self.FK_AdTbl_DealTbl1">
+            <End Role="DealTbl" EntitySet="DealTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_PageTbl" Association="Self.FK_AdTbl_PageTbl">
+            <End Role="PageTbl" EntitySet="PageTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_PreferenceAdTbl" Association="Self.FK_AdTbl_PreferenceAdTbl">
+            <End Role="PreferenceSheetTbl" EntitySet="PreferenceSheetTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_PreferenceTbl" Association="Self.FK_AdTbl_PreferenceTbl">
+            <End Role="PreferencePageTbl" EntitySet="PreferencePageTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_SizeTbl1" Association="Self.FK_AdTbl_SizeTbl1">
+            <End Role="SizeTbl" EntitySet="SizeTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdTbl_UserTbl" Association="Self.FK_AdTbl_UserTbl">
+            <End Role="UserTbl" EntitySet="UserTbl" />
+            <End Role="AdTbl" EntitySet="AdTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealTbl_DealTypeTbl1" Association="Self.FK_DealTbl_DealTypeTbl1">
+            <End Role="DealTypeTbl" EntitySet="DealTypeTbl" />
+            <End Role="DealTbl" EntitySet="DealTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealTbl_PageTypeTbl" Association="Self.FK_DealTbl_PageTypeTbl">
+            <End Role="PageTypeTbl" EntitySet="PageTypeTbl" />
+            <End Role="DealTbl" EntitySet="DealTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DealTbl_UserTbl" Association="Self.FK_DealTbl_UserTbl">
+            <End Role="UserTbl" EntitySet="UserTbl" />
+            <End Role="DealTbl" EntitySet="DealTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PagesTbl_PageTypesTbl" Association="Self.FK_PagesTbl_PageTypesTbl">
+            <End Role="PageTypeTbl" EntitySet="PageTypeTbl" />
+            <End Role="PageTbl" EntitySet="PageTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacementTbl_SheetTbl" Association="Self.FK_PlacementTbl_SheetTbl">
+            <End Role="SheetTbl" EntitySet="SheetTbl" />
+            <End Role="PlacementTbl" EntitySet="PlacementTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriorityTbl_ScoreTbl" Association="Self.FK_PriorityTbl_ScoreTbl">
+            <End Role="ScoreTbl" EntitySet="ScoreTbl" />
+            <End Role="PriorityTbl" EntitySet="PriorityTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriorityTbl_UserTbl1" Association="Self.FK_PriorityTbl_UserTbl1">
+            <End Role="UserTbl" EntitySet="UserTbl" />
+            <End Role="PriorityTbl" EntitySet="PriorityTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SheetsTbl_SheetTypesTbl" Association="Self.FK_SheetsTbl_SheetTypesTbl">
+            <End Role="SheetTypeTbl" EntitySet="SheetTypeTbl" />
+            <End Role="SheetTbl" EntitySet="SheetTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SheetsTbl_SizesTbl1" Association="Self.FK_SheetsTbl_SizesTbl1">
+            <End Role="SizeTbl" EntitySet="SizeTbl" />
+            <End Role="SheetTbl" EntitySet="SheetTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTbl_PermissionTbl" Association="AdsPlacementModel.FK_UserTbl_PermissionTbl">
+            <End Role="PermissionTbl" EntitySet="PermissionTbl" />
+            <End Role="UserTbl" EntitySet="UserTbl" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_UserTbl_PermissionTbl">
+          <End Type="AdsPlacementModel.PermissionTbl" Role="PermissionTbl" Multiplicity="0..1" />
+          <End Type="AdsPlacementModel.UserTbl" Role="UserTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PermissionTbl">
+              <PropertyRef Name="IDPermission" />
+            </Principal>
+            <Dependent Role="UserTbl">
+              <PropertyRef Name="IDPermission" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdsPlacementModelStoreContainer" CdmEntityContainer="AdsPlacementEntities">
+          <EntitySetMapping Name="AdImageTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.AdImageTbl">
+              <MappingFragment StoreEntitySet="AdImageTbl">
+                <ScalarProperty Name="IDAdImage" ColumnName="IDAdImage" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdplacementTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.AdplacementTbl">
+              <MappingFragment StoreEntitySet="AdplacementTbl">
+                <ScalarProperty Name="IDAdPlacement" ColumnName="IDAdPlacement" />
+                <ScalarProperty Name="IDPlacement" ColumnName="IDPlacement" />
+                <ScalarProperty Name="IDAd" ColumnName="IDAd" />
+                <ScalarProperty Name="IDPage" ColumnName="IDPage" />
+                <ScalarProperty Name="LeftPositionX" ColumnName="LeftPositionX" />
+                <ScalarProperty Name="LeftPositionY" ColumnName="LeftPositionY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.AdTbl">
+              <MappingFragment StoreEntitySet="AdTbl">
+                <ScalarProperty Name="IDAd" ColumnName="IDAd" />
+                <ScalarProperty Name="IDSize" ColumnName="IDSize" />
+                <ScalarProperty Name="IDPreferencePage" ColumnName="IDPreferencePage" />
+                <ScalarProperty Name="IDPreferenceSheet" ColumnName="IDPreferenceSheet" />
+                <ScalarProperty Name="DateRequest" ColumnName="DateRequest" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="IsGenizah" ColumnName="IsGenizah" />
+                <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+                <ScalarProperty Name="IsEmbedded" ColumnName="IsEmbedded" />
+                <ScalarProperty Name="LeftPositionX" ColumnName="LeftPositionX" />
+                <ScalarProperty Name="LeftPositionY" ColumnName="LeftPositionY" />
+                <ScalarProperty Name="IDDeal" ColumnName="IDDeal" />
+                <ScalarProperty Name="IDPage" ColumnName="IDPage" />
+                <ScalarProperty Name="IDAdImage" ColumnName="IDAdImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.CategoryTbl">
+              <MappingFragment StoreEntitySet="CategoryTbl">
+                <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+                <ScalarProperty Name="DescriptionCategory" ColumnName="DescriptionCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DealTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.DealTbl">
+              <MappingFragment StoreEntitySet="DealTbl">
+                <ScalarProperty Name="IDDeal" ColumnName="IDDeal" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IDDealType" ColumnName="IDDealType" />
+                <ScalarProperty Name="IDPageType" ColumnName="IDPageType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DealTypeTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.DealTypeTbl">
+              <MappingFragment StoreEntitySet="DealTypeTbl">
+                <ScalarProperty Name="IDDealType" ColumnName="IDDealType" />
+                <ScalarProperty Name="DescriptionDealType" ColumnName="DescriptionDealType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.PageTbl">
+              <MappingFragment StoreEntitySet="PageTbl">
+                <ScalarProperty Name="IDPage" ColumnName="IDPage" />
+                <ScalarProperty Name="PageNum" ColumnName="PageNum" />
+                <ScalarProperty Name="IDPageType" ColumnName="IDPageType" />
+                <ScalarProperty Name="IsExternal" ColumnName="IsExternal" />
+                <ScalarProperty Name="IDSheet" ColumnName="IDSheet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageTypeTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.PageTypeTbl">
+              <MappingFragment StoreEntitySet="PageTypeTbl">
+                <ScalarProperty Name="IDPageType" ColumnName="IDPageType" />
+                <ScalarProperty Name="DescriptionPageType" ColumnName="DescriptionPageType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermissionTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.PermissionTbl">
+              <MappingFragment StoreEntitySet="PermissionTbl">
+                <ScalarProperty Name="IDPermission" ColumnName="IDPermission" />
+                <ScalarProperty Name="PermissionName" ColumnName="PermissionName" />
+                <ScalarProperty Name="PermissionDescription" ColumnName="PermissionDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlacementTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.PlacementTbl">
+              <MappingFragment StoreEntitySet="PlacementTbl">
+                <ScalarProperty Name="IDPlacement" ColumnName="IDPlacement" />
+                <ScalarProperty Name="DatePlacement" ColumnName="DatePlacement" />
+                <ScalarProperty Name="IDSheet" ColumnName="IDSheet" />
+                <ScalarProperty Name="MarkPlacement" ColumnName="MarkPlacement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreferencePageTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.PreferencePageTbl">
+              <MappingFragment StoreEntitySet="PreferencePageTbl">
+                <ScalarProperty Name="DescriptionPreferencePage" ColumnName="DescriptionPreferencePage" />
+                <ScalarProperty Name="IDPreferencePage" ColumnName="IDPreferencePage" />
+                <ScalarProperty Name="QuarterLengthPage" ColumnName="QuarterLengthPage" />
+                <ScalarProperty Name="QuarterWidthPage" ColumnName="QuarterWidthPage" />
+                <ScalarProperty Name="IDSize" ColumnName="IDSize" />
+                <ScalarProperty Name="GradePlace" ColumnName="GradePlace" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreferenceSheetTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.PreferenceSheetTbl">
+              <MappingFragment StoreEntitySet="PreferenceSheetTbl">
+                <ScalarProperty Name="IDPreferenceSheet" ColumnName="IDPreferenceSheet" />
+                <ScalarProperty Name="ThirdSheet" ColumnName="ThirdSheet" />
+                <ScalarProperty Name="ExternalOrInternalPage" ColumnName="ExternalOrInternalPage" />
+                <ScalarProperty Name="DescriptionPreferenceSheet" ColumnName="DescriptionPreferenceSheet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriorityTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.PriorityTbl">
+              <MappingFragment StoreEntitySet="PriorityTbl">
+                <ScalarProperty Name="IDPriority" ColumnName="IDPriority" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="IDScore" ColumnName="IDScore" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScoreTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.ScoreTbl">
+              <MappingFragment StoreEntitySet="ScoreTbl">
+                <ScalarProperty Name="IDScore" ColumnName="IDScore" />
+                <ScalarProperty Name="DescriptionScore" ColumnName="DescriptionScore" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SheetTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.SheetTbl">
+              <MappingFragment StoreEntitySet="SheetTbl">
+                <ScalarProperty Name="IDSheet" ColumnName="IDSheet" />
+                <ScalarProperty Name="DateDistribution" ColumnName="DateDistribution" />
+                <ScalarProperty Name="NumOfPage" ColumnName="NumOfPage" />
+                <ScalarProperty Name="NumOfSheet" ColumnName="NumOfSheet" />
+                <ScalarProperty Name="IDSheetType" ColumnName="IDSheetType" />
+                <ScalarProperty Name="IDSize" ColumnName="IDSize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SheetTypeTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.SheetTypeTbl">
+              <MappingFragment StoreEntitySet="SheetTypeTbl">
+                <ScalarProperty Name="IDSheetType" ColumnName="IDSheetType" />
+                <ScalarProperty Name="DescriptionSheetType" ColumnName="DescriptionSheetType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SizeTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.SizeTbl">
+              <MappingFragment StoreEntitySet="SizeTbl">
+                <ScalarProperty Name="IDSize" ColumnName="IDSize" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="IsLength" ColumnName="IsLength" />
+                <ScalarProperty Name="SizeInFragments" ColumnName="SizeInFragments" />
+                <ScalarProperty Name="DescriptionSize" ColumnName="DescriptionSize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AdsPlacementModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTbl">
+            <EntityTypeMapping TypeName="AdsPlacementModel.UserTbl">
+              <MappingFragment StoreEntitySet="UserTbl">
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="IDCustomer" ColumnName="IDCustomer" />
+                <ScalarProperty Name="UserFName" ColumnName="UserFName" />
+                <ScalarProperty Name="UserLName" ColumnName="UserLName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AddressNum" ColumnName="AddressNum" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IDPermission" ColumnName="IDPermission" />
+                <ScalarProperty Name="SumScore" ColumnName="SumScore" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
